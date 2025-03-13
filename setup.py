@@ -15,7 +15,7 @@ def get_requirements(file_path:str)->List[str]:
 
     return requirements    
 setup(
-    name='ML Project 2',
+    name='NETWORKSECURITY',
     version='1.0.0.0',
     packages=find_packages(),
     install_requires=get_requirements('requirement.txt'),
