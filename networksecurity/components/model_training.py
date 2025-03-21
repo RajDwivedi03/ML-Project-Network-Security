@@ -24,6 +24,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 import mlflow
+import dagshub
+dagshub.init(repo_owner='RajDwivedi03', repo_name='ML-Project-Network-Security', mlflow=True)
 
 
 import sys
@@ -132,6 +134,8 @@ class ModelTrainer:
        os.makedirs(model_dir_path,exist_ok=True)
        Network_Model=NetworkModel(preprocessor=preprocessor,model=best_model)
        save_object(file_path=self.model_trainer_config.trained_model_file_path,obj=Network_Model)
+       save_object("final_models/model.pkl",best_model)
+
        model_trainer_artifact=ModelTrainerArtifact(trained_model_file_path=self.model_trainer_config.trained_model_file_path,
        train_metric_artifact=classification_train_metric,test_metric_artifact=classification_test_metric)
        return model_trainer_artifact,best_model_name

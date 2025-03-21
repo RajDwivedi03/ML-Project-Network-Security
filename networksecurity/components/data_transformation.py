@@ -21,7 +21,7 @@ from networksecurity.utils.main_utils.utils import save_object,save_numpy_array_
 class DataTransformation:
     def __init__(self,data_transformation_config:DataTransformationConfig,data_validation_artifact:DataValidationArtifact):
         try:
-            self.data_transformation_config=DataTransformationConfig=data_transformation_config
+            self.data_transformation_config:DataTransformationConfig=data_transformation_config
             self.data_validation_artifact:DataValidationArtifact=data_validation_artifact
         except Exception as e:
             raise NetworkSecurityException(e,sys)
@@ -74,6 +74,7 @@ class DataTransformation:
             save_numpy_array_data(file_path=self.data_transformation_config.transformed_train_file_path,array=train_arr)
             save_numpy_array_data(file_path=self.data_transformation_config.transformed_test_file_path,array=test_arr)  
             save_object(file_path=self.data_transformation_config.transformed_object_file_path,obj=preprocessor_obj)
+            save_object("final_models/preprocessor.pkl",preprocessor_obj)
 
 
             data_transformation_artifact=DataTransformationArtifact(transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,transformed_test_file_path=self.data_transformation_config.transformed_test_file_path,transformed_object_file_path=self.data_transformation_config.transformed_object_file_path)

@@ -6,10 +6,14 @@ flask
 python-dotenv
 pymongo
 certifi
+dotenv
 pymongo[srv]
 scikit-learn
 dill
 pyaml
 mlflow
+dagshub
+fastapi
+uvicorn
 
 #-e .
